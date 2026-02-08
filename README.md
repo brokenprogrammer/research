@@ -1,2 +1,3 @@
 # research
-sec
+
+Place to store personal sec research & testing projects.
