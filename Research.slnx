@@ -6,4 +6,6 @@
   </Configurations>
   <Project Path="Research.Benchmark/Research.Benchmark.csproj" />
   <Project Path="Research.Console/Research.Console.csproj" />
+  <Project Path="Research.Labs/Research.Labs.csproj" />
+  <Project Path="Research.Shared/Research.Shared.csproj" />
 </Solution>
