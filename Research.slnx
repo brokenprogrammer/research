@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Research.Benchmark/Research.Benchmark.csproj" />
+  <Project Path="Research.Console/Research.Console.csproj" />
+</Solution>
