@@ -1,5 +1,0 @@
-﻿namespace Research.Shared;
-
-public class Class1
-{
-}
