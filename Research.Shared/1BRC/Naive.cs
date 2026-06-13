@@ -28,17 +28,17 @@ public class Naive(string path)
                         },
                         agg => new ResultRow(
                             agg.Min,
-                            (Math.Round(agg.Sum * 10.0, MidpointRounding.AwayFromZero) / 10.0) / agg.Count,
+                            agg.Sum / agg.Count,
                             agg.Max)));
     }
     
     public record ResultRow(double Min, double Mean, double Max)
     {
         public override string ToString() =>
-            $"{Round(Min)}/{Round(Mean)}/{Round(Max)}";
+            string.Format(CultureInfo.InvariantCulture, "{0:F1}/{1:F1}/{2:F1}", Round(Min), Round(Mean), Round(Max));
     
         private static double Round(double value) =>
-            Math.Round(value * 10.0, MidpointRounding.AwayFromZero) / 10.0;
+            Math.Round(value * 10.0, MidpointRounding.ToEven) / 10.0;
     }
 
     private class MeasurementAggregator
