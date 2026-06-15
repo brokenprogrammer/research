@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Research.Console.Memory;
 using Research.Shared._1BRC;
+using Research.Shared._1BRC.Iteration1;
 using Research.Shared.Timing;
 
 Console.WriteLine($"PID: {Environment.ProcessId}");
@@ -13,9 +14,12 @@ Console.OutputEncoding = Encoding.UTF8;
 
 var stations = new Dictionary<string, Naive.ResultRow>();
 var naiveRun = new Naive("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt");
+
+var brc = new BRC("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt");
 using (new SimpleTimer())
 {
-    stations = naiveRun.Collect();
+    // stations = naiveRun.Collect();
+    brc.Collect();
 }
 
 var measurements = new SortedDictionary<string, Naive.ResultRow>(stations);
