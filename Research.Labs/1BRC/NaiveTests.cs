@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Research.Shared._1BRC;
 
 namespace Research.Labs._1BRC;
@@ -13,7 +12,7 @@ public class NaiveTests
 
         var measurementsFile = BRCHelpers.GetDataFile("measurements-20.txt");
         var naiveRunner = new Naive(measurementsFile);
-        var naiveResults = new SortedDictionary<string, Naive.ResultRow>(naiveRunner.Collect());
+        var naiveResults = new SortedDictionary<string, StationResult>(naiveRunner.Collect());
         
         Assert.Equal(results, naiveResults);
     }
@@ -26,7 +25,7 @@ public class NaiveTests
 
         var measurementsFile = BRCHelpers.GetDataFile("measurements-1000.txt");
         var naiveRunner = new Naive(measurementsFile);
-        var naiveResults = new SortedDictionary<string, Naive.ResultRow>(naiveRunner.Collect());
+        var naiveResults = new SortedDictionary<string, StationResult>(naiveRunner.Collect());
         
         foreach (var key in results.Keys)
         {
@@ -39,5 +38,31 @@ public class NaiveTests
             Assert.Equal(expected.Max, actual.Max, precision: 1);
             Assert.InRange(actual.Mean, expected.Mean - 0.05, expected.Mean + 0.05);
         }
+    }
+    
+    [Fact]
+    public void NaiveAndParallelGivesSameResultsForDatasetOf20()
+    {
+        var measurementsFile = BRCHelpers.GetDataFile("measurements-20.txt");
+        
+        var naiveRunner = new Naive(measurementsFile);
+        var naiveResults = new SortedDictionary<string, StationResult>(naiveRunner.Collect());
+     
+        var parallelRunner = new NaiveParallel(measurementsFile);
+        var parallelResults =  new SortedDictionary<string, StationResult>(parallelRunner.Collect());
+        Assert.Equal(parallelResults, naiveResults);
+    }
+    
+    [Fact]
+    public void NaiveAndParallelGivesSameResultsForDatasetOf1000()
+    {
+        var measurementsFile = BRCHelpers.GetDataFile("measurements-1000.txt");
+        
+        var naiveRunner = new Naive(measurementsFile);
+        var naiveResults = new SortedDictionary<string, StationResult>(naiveRunner.Collect());
+     
+        var parallelRunner = new NaiveParallel(measurementsFile);
+        var parallelResults =  new SortedDictionary<string, StationResult>(parallelRunner.Collect());
+        Assert.Equal(parallelResults, naiveResults);
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Research.Shared._1BRC.Iteration1;
 
-public class BRC
+public class BRC : IBRC
 {
     private string _path;
     private int _numberOfCores = 0;
@@ -15,7 +15,7 @@ public class BRC
         _numberOfCores = Environment.ProcessorCount;
     }
 
-    public Dictionary<string, Naive.ResultRow> Collect()
+    public Dictionary<string, StationResult> Collect()
     {
         var allText = File.ReadAllText(_path, new UTF8Encoding());
         var results =
@@ -73,7 +73,7 @@ public class BRC
 
         return results.ToDictionary(
             kvp => kvp.Key,
-            kvp => new Naive.ResultRow(
+            kvp => new StationResult(
                 kvp.Value.Min,
                 kvp.Value.Sum / kvp.Value.Count,
                 kvp.Value.Max));

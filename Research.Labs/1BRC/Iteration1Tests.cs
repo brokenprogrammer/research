@@ -11,10 +11,10 @@ public class Iteration1Tests
         var measurementsFile = BRCHelpers.GetDataFile("measurements-20.txt");
         
         var naiveRunner = new Naive(measurementsFile);
-        var naiveResults = new SortedDictionary<string, Naive.ResultRow>(naiveRunner.Collect());
+        var naiveResults = new SortedDictionary<string, StationResult>(naiveRunner.Collect());
      
         var brc = new BRC(measurementsFile);
-        var brcResults =  new SortedDictionary<string, Naive.ResultRow>(brc.Collect());
+        var brcResults =  new SortedDictionary<string, StationResult>(brc.Collect());
         Assert.Equal(brcResults, naiveResults);
     }
     
@@ -24,10 +24,10 @@ public class Iteration1Tests
         var measurementsFile = BRCHelpers.GetDataFile("measurements-1000.txt");
         
         var naiveRunner = new Naive(measurementsFile);
-        var naiveResults = new SortedDictionary<string, Naive.ResultRow>(naiveRunner.Collect());
+        var naiveResults = new SortedDictionary<string, StationResult>(naiveRunner.Collect());
      
         var brc = new BRC(measurementsFile);
-        var brcResults =  new SortedDictionary<string, Naive.ResultRow>(brc.Collect());
+        var brcResults =  new SortedDictionary<string, StationResult>(brc.Collect());
         Assert.Equal(brcResults, naiveResults);
     }
 }

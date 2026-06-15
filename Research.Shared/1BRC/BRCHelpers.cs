@@ -15,9 +15,9 @@ public static class BRCHelpers
         return file;
     }
 
-    public static SortedDictionary<string, Naive.ResultRow> ParseResults(string fileName)
+    public static SortedDictionary<string, StationResult> ParseResults(string fileName)
     {
-        var dict =  new Dictionary<string, Naive.ResultRow>();
+        var dict =  new Dictionary<string, StationResult>();
         
         var x = File.ReadAllText(fileName, new UTF8Encoding());
         x = x.Replace("{", "").Replace("}", "");
@@ -33,9 +33,9 @@ public static class BRCHelpers
             var mean = double.Parse(resultParts[1], CultureInfo.InvariantCulture);
             var max = double.Parse(resultParts[2], CultureInfo.InvariantCulture);
             
-            dict[stationName] = new Naive.ResultRow(min, mean, max);
+            dict[stationName] = new StationResult(min, mean, max);
         }
         
-        return new SortedDictionary<string, Naive.ResultRow>(dict);
+        return new SortedDictionary<string, StationResult>(dict);
     }
 }

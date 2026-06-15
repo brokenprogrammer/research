@@ -12,7 +12,7 @@ Console.WriteLine($"PID: {Environment.ProcessId}");
 
 Console.OutputEncoding = Encoding.UTF8;
 
-var stations = new Dictionary<string, Naive.ResultRow>();
+var stations = new Dictionary<string, StationResult>();
 var naiveRun = new Naive("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt");
 
 var brc = new BRC("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt");
@@ -22,7 +22,7 @@ using (new SimpleTimer())
     brc.Collect();
 }
 
-var measurements = new SortedDictionary<string, Naive.ResultRow>(stations);
+var measurements = new SortedDictionary<string, StationResult>(stations);
 Console.WriteLine(
     "{" + string.Join(", ", measurements.Select(kv => $"{kv.Key}={kv.Value}")) + "}");
 
