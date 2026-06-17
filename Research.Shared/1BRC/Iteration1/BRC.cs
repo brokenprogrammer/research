@@ -23,9 +23,11 @@ public class BRC : IBRC
                 .AsParallel()
                 .Select(i =>
                 {
+                    // This basically doubles our memory useage because we're allocating new strings.
                     var substring = allText.Substring((int)i.Start, (int)i.End - (int)i.Start);
                     var local = new Dictionary<string, MeasurementAggregator>();
 
+                    // This is also memory inneficient as we're creating a new string[] and two new string objects.
                     foreach (var line in substring.Split('\n'))
                     {
                         if (string.IsNullOrWhiteSpace(line)) continue;

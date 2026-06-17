@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Research.Console.Memory;
+using Research.Console.Scratch;
 using Research.Shared._1BRC;
 using Research.Shared._1BRC.Iteration1;
 using Research.Shared.Timing;
@@ -12,19 +13,34 @@ Console.WriteLine($"PID: {Environment.ProcessId}");
 
 Console.OutputEncoding = Encoding.UTF8;
 
-var stations = new Dictionary<string, StationResult>();
-var naiveRun = new Naive("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt");
+BasicPointer.RunBasic();
 
-var brc = new BRC("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt");
-using (new SimpleTimer())
-{
-    // stations = naiveRun.Collect();
-    brc.Collect();
-}
+// var stations = new Dictionary<string, StationResult>();
+// var naiveRun = new Naive("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt");
+//
+// var brc = new BRC("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt");
+// using (new SimpleTimer())
+// {
+//     // stations = naiveRun.Collect();
+//     brc.Collect();
+// }
+//
+// var measurements = new SortedDictionary<string, StationResult>(stations);
+// Console.WriteLine(
+//     "{" + string.Join(", ", measurements.Select(kv => $"{kv.Key}={kv.Value}")) + "}");
 
-var measurements = new SortedDictionary<string, StationResult>(stations);
-Console.WriteLine(
-    "{" + string.Join(", ", measurements.Select(kv => $"{kv.Key}={kv.Value}")) + "}");
+
+
+
+
+
+
+
+
+
+
+
+
 
 // var lines = File.ReadAllLines("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt", new UTF8Encoding());
 // foreach (var l in lines)

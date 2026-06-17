@@ -3,7 +3,7 @@ using BenchmarkDotNet.Attributes;
 using Research.Shared._1BRC;
 using Research.Shared._1BRC.Iteration1;
 
-namespace Research.Benchmark;
+namespace Research.Benchmark._1BRC;
 
 [ShortRunJob]
 [MemoryDiagnoser]
