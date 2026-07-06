@@ -7,13 +7,27 @@ using Research.Console.Memory;
 using Research.Console.Scratch;
 using Research.Shared._1BRC;
 using Research.Shared._1BRC.Iteration1;
+using Research.Shared.Leetcode;
 using Research.Shared.Timing;
 
 Console.WriteLine($"PID: {Environment.ProcessId}");
 
 Console.OutputEncoding = Encoding.UTF8;
 
-BasicPointer.RunBasic();
+// BasicPointer.RunBasic();
+
+int N = 100_000;
+var rnd = new Random(42); // fixed seed => reproducible runs
+int[] _nums = new int[N];
+for (int i = 0; i < N; i++)
+    _nums[i] = rnd.Next(-1_000_000, 1_000_000);
+
+_nums.Sort();
+int _target = _nums[N - 1] + _nums[N - 2];
+
+// TwoSum.HashStatistics stats;
+// TwoSum.TwoSumCustomHashSentinel(_nums, _target, out stats);
+// Console.WriteLine(stats);
 
 // var stations = new Dictionary<string, StationResult>();
 // var naiveRun = new Naive("C:\\Users\\mende\\Documents\\Github\\research\\Data\\measurements-20.txt");
